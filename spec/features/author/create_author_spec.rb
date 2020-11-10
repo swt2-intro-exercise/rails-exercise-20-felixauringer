@@ -18,7 +18,10 @@ describe 'Submitting the author form', type: :feature do
   end
 
   it 'adds a new author to the database' do
-    expect { click_button('Save Author') }.to change(Author.all, :count).from(0).to(1)
-    expect(Author.first).to eq(author)
+    expect { click_button('commit') }.to change(Author.all, :count).from(0).to(1)
+    author = Author.first
+    expect(author.first_name).to eq(author_params[:first_name])
+    expect(author.last_name).to eq(author_params[:last_name])
+    expect(author.homepage).to eq(author_params[:homepage])
   end
 end
