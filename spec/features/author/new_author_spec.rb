@@ -19,5 +19,9 @@ describe 'New author page', type: :feature do
     it 'has a homepage input field' do
       expect(page).to have_field('author[homepage]')
     end
+
+    it 'has a submit button' do
+      expect(page).to have_button('commit')
+    end
   end
 end
