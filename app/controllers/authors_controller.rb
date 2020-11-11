@@ -1,9 +1,21 @@
 class AuthorsController < ApplicationController
+  # index
+
+  def show
+    @author = Author.find(params[:id])
+  end
+
   def new; end
+
+  # edit
 
   def create
     Author.new(author_params).save
   end
+
+  # update
+
+  # destroy
 
   private
 
