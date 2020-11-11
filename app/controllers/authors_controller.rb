@@ -3,6 +3,9 @@ class AuthorsController < ApplicationController
 
   def show
     @author = Author.find(params[:id])
+
+  rescue ActiveRecord::RecordNotFound
+    not_found
   end
 
   def new; end
@@ -10,7 +13,11 @@ class AuthorsController < ApplicationController
   # edit
 
   def create
-    Author.new(author_params).save
+    @author = Author.new(author_params)
+
+    return render :new unless @author.save
+
+    redirect_to @author
   end
 
   # update

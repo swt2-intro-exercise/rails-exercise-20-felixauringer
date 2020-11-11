@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'Submitting the author form', type: :feature do
-  let(:author) { FactoryBot.build :author, :with_homepage }
   let(:create_author) { click_button('commit') }
 
   before do
@@ -12,6 +11,8 @@ describe 'Submitting the author form', type: :feature do
   end
 
   describe 'with valid attributes' do
+    let(:author) { FactoryBot.build :author, :with_homepage }
+
     it 'adds a new author to the database' do
       expect { create_author }.to change(Author, :count).from(0).to(1)
       author_db = Author.first
@@ -22,7 +23,7 @@ describe 'Submitting the author form', type: :feature do
   end
 
   describe 'without first_name' do
-    before { author.first_name = '' }
+    let(:author) { Author.new(last_name: 'Turing') }
 
     it 'does not add the author to the database' do
       expect { create_author }.not_to change(Author, :count)
@@ -30,7 +31,7 @@ describe 'Submitting the author form', type: :feature do
   end
 
   describe 'without last_name' do
-    before { author.last_name = '' }
+    let(:author) { Author.new(first_name: 'Alan') }
 
     it 'does not add the author to the database' do
       expect { create_author }.not_to change(Author, :count)

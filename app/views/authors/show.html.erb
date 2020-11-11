@@ -1,3 +1,5 @@
+<h1><%= @author.name %></h1>
+
 <p>
   <strong>First name:</strong>
   <%= @author.first_name %>
@@ -8,7 +10,9 @@
   <%= @author.last_name %>
 </p>
 
-<p>
-  <strong>Homepage:</strong>
-  <%= @author.homepage %>
-</p>
+<% if @author.has_homepage? %>
+  <p>
+    <strong>Homepage:</strong>
+    <%= @author.homepage %>
+  </p>
+<% end %>
