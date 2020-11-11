@@ -27,6 +27,12 @@ describe 'Submitting the author form', type: :feature do
 
     it 'does not add the author to the database' do
       expect { create_author }.not_to change(Author, :count)
+
+    end
+
+    it 'shows an error message' do
+      create_author
+      expect(page).to have_text("First name can't be blank")
     end
   end
 
@@ -35,6 +41,11 @@ describe 'Submitting the author form', type: :feature do
 
     it 'does not add the author to the database' do
       expect { create_author }.not_to change(Author, :count)
+    end
+
+    it 'shows an error message' do
+      create_author
+      expect(page).to have_text("Last name can't be blank")
     end
   end
 end
