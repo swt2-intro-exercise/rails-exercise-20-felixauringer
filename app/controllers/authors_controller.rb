@@ -8,7 +8,9 @@ class AuthorsController < ApplicationController
     not_found
   end
 
-  def new; end
+  def new
+    @author = Author.new
+  end
 
   # edit
 
