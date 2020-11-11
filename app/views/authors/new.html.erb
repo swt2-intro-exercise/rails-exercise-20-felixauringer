@@ -1,34 +1,3 @@
-<% if @author.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@author.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-    <ul>
-      <% @author.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <h1>New author</h1>
 
-<%= form_with scope: :author, url: authors_path, local: true do |form| %>
-  <p>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </p>
-
-  <p>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </p>
-
-  <p>
-    <%= form.label :homepage %>
-    <%= form.text_field :homepage %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render partial: 'form' %>
