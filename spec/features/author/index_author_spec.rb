@@ -12,10 +12,12 @@ describe 'Index author page', type: :feature do
     visit authors_path
     expect(page).to have_text(authors[0].name)
     expect(page).to have_text(authors[0].homepage)
-    expect(page).to have_link('Show author', href: author_path(authors[0]))
+    expect(page).to have_link('Show', href: author_path(authors[0]))
+    expect(page).to have_link('Edit', href: edit_author_path(authors[0]))
     expect(page).to have_text(authors[author_count - 1].name)
     expect(page).to have_text(authors[author_count - 1].homepage)
-    expect(page).to have_link('Show author', href: author_path(authors[author_count - 1]))
+    expect(page).to have_link('Show', href: author_path(authors[author_count - 1]))
+    expect(page).to have_link('Edit', href: edit_author_path(authors[author_count - 1]))
   end
 
   it 'has a link to the new author page' do
