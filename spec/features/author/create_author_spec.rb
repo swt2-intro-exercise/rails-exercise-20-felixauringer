@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Submitting the author form', type: :feature do
+describe 'Submitting the new author form', type: :feature do
   let(:create_author) { click_button('commit') }
 
   before do

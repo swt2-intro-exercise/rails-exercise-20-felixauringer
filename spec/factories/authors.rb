@@ -5,6 +5,12 @@ FactoryBot.define do
   end
 
   trait :with_homepage do
-    homepage { 'http://wikipedia.de/Alan_Turing' }
+    homepage { 'https://wikipedia.de/Alan_Turing' }
+  end
+
+  trait :different do
+    first_name { 'David Heinemeier' }
+    last_name { 'Hansson' }
+    homepage { 'https://dhh.dk/' }
   end
 end
