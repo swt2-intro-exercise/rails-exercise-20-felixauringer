@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Update author request', type: :request do
-  let(:author) { FactoryBot.build :author }
+  let(:author) { FactoryBot.create :author }
   let(:params) do
     {
       first_name: author.first_name,
@@ -9,7 +9,7 @@ RSpec.describe 'Update author request', type: :request do
     }
   end
 
-  before { post edit_author_path(author), params: { author: params } }
+  before { patch author_path(author), params: { author: params } }
 
   describe 'with valid params' do
     it 'redirects to the show page' do

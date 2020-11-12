@@ -40,7 +40,7 @@ describe 'Submitting the edit author form', type: :feature do
   end
 
   describe 'without last_name' do
-    let(:author) { Author.new(first_name: 'Alan') }
+    let(:updated_author) { Author.new(first_name: 'Alan') }
 
     it 'does not change the author' do
       expect { author.reload }.not_to change(author, :hash)
