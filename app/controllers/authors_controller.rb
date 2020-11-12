@@ -14,7 +14,12 @@ class AuthorsController < ApplicationController
     @author = Author.new
   end
 
-  # edit
+  def edit
+    @author = Author.find(params[:id])
+
+  rescue ActiveRecord::RecordNotFound
+    not_found
+  end
 
   def create
     @author = Author.new(author_params)
@@ -24,7 +29,16 @@ class AuthorsController < ApplicationController
     redirect_to @author
   end
 
-  # update
+  def update
+    @author = Author.find(params[:id])
+
+    return render :edit unless @author.update(author_params)
+
+    redirect_to @author
+
+  rescue ActiveRecord::RecordNotFound
+    not_found
+  end
 
   # destroy
 
