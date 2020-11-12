@@ -24,4 +24,9 @@ describe 'New author page', type: :feature do
       expect(page).to have_button('commit')
     end
   end
+
+  it 'has a link to the index page' do
+    visit new_author_path
+    expect(page).to have_link('Back', href: authors_path)
+  end
 end

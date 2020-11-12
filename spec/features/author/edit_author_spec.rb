@@ -26,4 +26,14 @@ describe 'Edit author page', type: :feature do
       expect(page).to have_button('commit')
     end
   end
+
+  it 'has a link to the index page' do
+    visit edit_author_path(author)
+    expect(page).to have_link('Back', href: authors_path)
+  end
+
+  it 'has a link to the show page' do
+    visit edit_author_path(author)
+    expect(page).to have_link('Show author', href: author_path(author))
+  end
 end

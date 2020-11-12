@@ -33,4 +33,19 @@ describe 'Show author page', type: :feature do
       expect(page).not_to have_text('Homepage')
     end
   end
+
+  it 'has a link to the index page' do
+    visit author_path(author)
+    expect(page).to have_link('Back', href: authors_path)
+  end
+
+  it 'has a link to the edit page' do
+    visit author_path(author)
+    expect(page).to have_link('Edit author', href: edit_author_path(author))
+  end
+
+  it 'removes the author from the database' do
+    visit author_path(author)
+    expect(page).to have_link('Delete author', href: author_path(author))
+  end
 end
