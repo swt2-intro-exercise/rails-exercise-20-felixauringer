@@ -6,6 +6,7 @@ RSpec.describe 'Show author request', type: :request do
 
     it 'renders the show page' do
       get author_path(author.id)
+      expect(response).to have_http_status :ok
       expect(response).to render_template :show
     end
   end

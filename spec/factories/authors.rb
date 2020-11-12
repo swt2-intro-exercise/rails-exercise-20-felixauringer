@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :author do
-    first_name { 'Alan' }
+    sequence(:first_name) { |n| "Alan#{n}" }
     last_name { 'Turing' }
   end
 
