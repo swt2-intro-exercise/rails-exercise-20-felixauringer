@@ -5,7 +5,6 @@ class AuthorsController < ApplicationController
 
   def show
     @author = Author.find(params[:id])
-
   rescue ActiveRecord::RecordNotFound
     not_found
   end
@@ -16,7 +15,6 @@ class AuthorsController < ApplicationController
 
   def edit
     @author = Author.find(params[:id])
-
   rescue ActiveRecord::RecordNotFound
     not_found
   end
@@ -35,12 +33,17 @@ class AuthorsController < ApplicationController
     return render :edit unless @author.update(author_params)
 
     redirect_to @author
-
   rescue ActiveRecord::RecordNotFound
     not_found
   end
 
-  # destroy
+  def destroy
+    @author = Author.find(params[:id])
+    @author.destroy
+    redirect_to authors_path
+  rescue ActiveRecord::RecordNotFound
+    not_found
+  end
 
   private
 
