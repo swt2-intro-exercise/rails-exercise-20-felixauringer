@@ -16,3 +16,7 @@
     <%= @author.homepage %>
   </p>
 <% end %>
+
+<%= link_to 'Back', authors_path %>
+<%= link_to 'Edit author', edit_author_path(@author) %>
+<%= link_to 'Delete author', author_path(@author), method: :delete, data: { confirm: 'Are you sure?' } %>
