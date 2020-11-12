@@ -6,6 +6,7 @@
   <tr>
     <th><strong>Name</strong></th>
     <th><strong>Homepage</strong></th>
+    <th>Actions</th>
     <th></th>
   </tr>
 
@@ -13,7 +14,8 @@
     <tr>
       <td><%= author.name %></td>
       <td><%= author.homepage %></td>
-      <td><%= link_to 'Show author', author_path(author) %></td>
+      <td><%= link_to 'Show', author_path(author) %></td>
+      <td><%= link_to 'Edit', edit_author_path(author) %></td>
     </tr>
   <% end %>
 </table>
