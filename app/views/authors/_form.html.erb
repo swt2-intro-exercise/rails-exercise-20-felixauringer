@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_with model: @author, local: true do |form| %>
+<%= form_with(model: @author, local: true) do |form| %>
   <p>
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>

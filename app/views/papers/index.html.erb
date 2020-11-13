@@ -2,6 +2,8 @@
 
 <h1>Papers</h1>
 
+<h2><%= link_to 'New Paper', new_paper_path %></h2>
+
 <table>
   <thead>
     <tr>
@@ -20,12 +22,10 @@
         <td><%= paper.year %></td>
         <td><%= link_to 'Show', paper %></td>
         <td><%= link_to 'Edit', edit_paper_path(paper) %></td>
-        <td><%= link_to 'Destroy', paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Paper', new_paper_path %>
+<%= link_to 'Homepage', root_path %>
