@@ -1,8 +1,11 @@
 FactoryBot.define do
   factory :paper do
-    title { 'COMPUTING MACHINERY AND INTELLIGENCE' }
+    sequence(:title) { |n| "COMPUTING MACHINERY AND INTELLIGENCE VOL #{n}" }
     venue { 'Mind 49: 433-460' }
     year { 1950 }
-    authors { build_list :author, 1 }
+  end
+
+  trait :with_authors do
+    authors { FactoryBot.create_list :author, 5 }
   end
 end
