@@ -5,6 +5,6 @@ class Paper < ApplicationRecord
   validates :year, numericality: { only_integer: true }
 
   def author_list
-    authors.map { |author| author.name }.join(', ')
+    authors.map(&:name).join(', ')
   end
 end

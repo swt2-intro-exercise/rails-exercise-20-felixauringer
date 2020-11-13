@@ -1,5 +1,6 @@
 class PapersController < ApplicationController
   before_action :set_paper, only: %i[show edit update destroy]
+  before_action :set_authors, only: %i[new edit]
 
   # GET /papers
   def index
@@ -24,6 +25,7 @@ class PapersController < ApplicationController
     if @paper.save
       redirect_to @paper, notice: 'Paper was successfully created.'
     else
+      set_authors
       render :new
     end
   end
@@ -33,6 +35,7 @@ class PapersController < ApplicationController
     if @paper.update(paper_params)
       redirect_to @paper, notice: 'Paper was successfully updated.'
     else
+      set_authors
       render :edit
     end
   end
@@ -40,7 +43,7 @@ class PapersController < ApplicationController
   # DELETE /papers/1
   def destroy
     @paper.destroy
-    redirect_to papers_url, notice: 'Paper was successfully destroyed.'
+    redirect_to papers_path, notice: 'Paper was successfully destroyed.'
   end
 
   private
@@ -52,8 +55,12 @@ class PapersController < ApplicationController
     not_found
   end
 
+  def set_authors
+    @authors = Author.all
+  end
+
   # Only allow a trusted parameter "white list" through.
   def paper_params
-    params.require(:paper).permit(:title, :venue, :year)
+    params.require(:paper).permit(:title, :venue, :year, author_ids: [])
   end
 end
