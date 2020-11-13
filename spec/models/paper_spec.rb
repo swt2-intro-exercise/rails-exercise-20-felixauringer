@@ -24,6 +24,14 @@ RSpec.describe Paper, type: :model do
     end
   end
 
+  context 'without venue' do
+    let(:attributes) { super().merge(venue: '') }
+
+    it 'cannot be created' do
+      expect { create_paper }.not_to change(Paper, :count)
+    end
+  end
+
   context 'without year' do
     let(:attributes) { super().merge(year: nil) }
 
