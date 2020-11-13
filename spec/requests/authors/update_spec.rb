@@ -14,14 +14,14 @@ RSpec.describe 'Update author request', type: :request do
 
   describe 'with valid params' do
     it 'redirects to the show page' do
-      expect(response).to redirect_to(action: :show, id: author.id)
+      expect(response).to redirect_to(author_path author)
     end
   end
 
   describe 'with invalid params' do
     let(:params) { super().merge(first_name: '') }
 
-    it 're-renders the new page' do
+    it 're-renders the edit page' do
       expect(response).to render_template :edit
     end
   end

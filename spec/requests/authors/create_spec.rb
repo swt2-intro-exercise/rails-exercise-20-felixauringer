@@ -13,7 +13,7 @@ RSpec.describe 'Create author request', type: :request do
 
   describe 'with valid params' do
     it 'redirects to the show page' do
-      expect(response).to redirect_to(action: :show, id: 1)
+      expect(response).to redirect_to(author_path Author.last)
     end
   end
 
