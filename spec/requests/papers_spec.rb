@@ -90,7 +90,7 @@ RSpec.describe '/papers', type: :request do
       let(:new_attributes) do
         {
           title: 'Another paper',
-          venue: '',
+          venue: 'Another venue',
           year: 1789
         }
       end
