@@ -4,6 +4,8 @@ class Paper < ApplicationRecord
   validates :title, :venue, :year, presence: true
   validates :year, numericality: { only_integer: true }
 
+  scope :published_in, ->(year) { where(year: year) }
+
   def author_list
     authors.map(&:name).join(', ')
   end
