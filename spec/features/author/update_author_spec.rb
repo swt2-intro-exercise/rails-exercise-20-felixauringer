@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Submitting the edit author form', type: :feature do
-  let(:author) { FactoryBot.create :author, :with_homepage }
+  let(:author) { FactoryBot.create(:author, :with_homepage) }
 
   before do
     visit edit_author_path(author)
@@ -12,7 +12,7 @@ describe 'Submitting the edit author form', type: :feature do
   end
 
   describe 'with valid attributes' do
-    let(:updated_author) { FactoryBot.build :author, :different }
+    let(:updated_author) { FactoryBot.build(:author, :different) }
 
     it 'changes the first_name' do
       expect { author.reload }.to change(author, :first_name).from(author.first_name).to(updated_author.first_name)
