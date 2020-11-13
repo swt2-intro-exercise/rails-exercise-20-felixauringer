@@ -1,23 +1,17 @@
 class AuthorsController < ApplicationController
+  before_action :set_author, only: %i[show edit update destroy]
+
   def index
     @authors = Author.all
   end
 
-  def show
-    @author = Author.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    not_found
-  end
+  def show; end
 
   def new
     @author = Author.new
   end
 
-  def edit
-    @author = Author.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    not_found
-  end
+  def edit; end
 
   def create
     @author = Author.new(author_params)
@@ -28,26 +22,25 @@ class AuthorsController < ApplicationController
   end
 
   def update
-    @author = Author.find(params[:id])
-
     return render :edit unless @author.update(author_params)
 
     redirect_to @author
-  rescue ActiveRecord::RecordNotFound
-    not_found
   end
 
   def destroy
-    @author = Author.find(params[:id])
     @author.destroy
     redirect_to authors_path
-  rescue ActiveRecord::RecordNotFound
-    not_found
   end
 
   private
 
   def author_params
     params.require(:author).permit(:first_name, :last_name, :homepage)
+  end
+
+  def set_author
+    @author = Author.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    not_found
   end
 end
