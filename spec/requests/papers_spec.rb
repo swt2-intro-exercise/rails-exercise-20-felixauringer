@@ -94,6 +94,8 @@ RSpec.describe '/papers', type: :request do
           year: 1789
         }
       end
+      let(:author_ids) { FactoryBot.create_list(:author, 5).map(&:id) }
+      let(:updated_author_ids) { FactoryBot.create_list(:author, 5).map(&:id) }
 
       it 'updates the requested paper' do
         paper = Paper.create valid_attributes
@@ -102,6 +104,14 @@ RSpec.describe '/papers', type: :request do
         expect(paper.title).to eq(new_attributes[:title])
         expect(paper.venue).to eq(new_attributes[:venue])
         expect(paper.year).to eq(new_attributes[:year])
+      end
+
+      it 'updates the author list' do
+        paper = Paper.create valid_attributes.merge(author_ids: author_ids)
+        patch paper_path(paper), params: { paper: new_attributes.merge(author_ids: updated_author_ids) }
+        paper.reload
+        expect(paper.author_ids).to eq(updated_author_ids)
+        expect(paper.author_ids).not_to include(author_ids)
       end
 
       it 'redirects to the paper' do
