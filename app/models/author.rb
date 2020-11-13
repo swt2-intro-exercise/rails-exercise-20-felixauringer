@@ -5,7 +5,7 @@ class Author < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def has_homepage?
+  def homepage?
     homepage.present?
   end
 end
