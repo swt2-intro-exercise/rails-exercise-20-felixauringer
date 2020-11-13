@@ -27,8 +27,8 @@ describe 'Submitting the edit author form', type: :feature do
     end
   end
 
-  describe 'without first_name' do
-    let(:updated_author) { Author.new(last_name: 'Turing') }
+  describe 'without valid attributes' do
+    let(:updated_author) { Author.new }
 
     it 'does not change the author' do
       expect { author.reload }.not_to change(author, :hash)
@@ -36,17 +36,6 @@ describe 'Submitting the edit author form', type: :feature do
 
     it 'shows an error message' do
       expect(page).to have_text("First name can't be blank")
-    end
-  end
-
-  describe 'without last_name' do
-    let(:updated_author) { Author.new(first_name: 'Alan') }
-
-    it 'does not change the author' do
-      expect { author.reload }.not_to change(author, :hash)
-    end
-
-    it 'shows an error message' do
       expect(page).to have_text("Last name can't be blank")
     end
   end

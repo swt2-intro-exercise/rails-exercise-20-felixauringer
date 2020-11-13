@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Update author request', type: :request do
   let(:author) { FactoryBot.create :author }
+  let(:updated_author) { FactoryBot.create(:author, :different) }
   let(:params) do
     {
-      first_name: author.first_name,
-      last_name: author.last_name
+      first_name: updated_author.first_name,
+      last_name: updated_author.last_name
     }
   end
 
@@ -13,7 +14,7 @@ RSpec.describe 'Update author request', type: :request do
 
   describe 'with valid params' do
     it 'redirects to the show page' do
-      expect(response).to redirect_to(action: :show, id: 1)
+      expect(response).to redirect_to(action: :show, id: author.id)
     end
   end
 

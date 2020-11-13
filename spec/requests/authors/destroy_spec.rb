@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Create author request', type: :request do
+RSpec.describe 'Destroy author request', type: :request do
   let(:author) { FactoryBot.create :author }
 
   describe 'with valid id' do
