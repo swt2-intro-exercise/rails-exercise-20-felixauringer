@@ -16,6 +16,10 @@ describe 'Author model', type: :model do
     expect(author.homepage).to eq(author_params[:homepage])
   end
 
+  it 'has a list of papers' do
+    expect(author.papers).to eq([])
+  end
+
   it 'has a full name' do
     full_name = [author_params[:first_name], author_params[:last_name]].join(' ')
     expect(author.name).to eq(full_name)

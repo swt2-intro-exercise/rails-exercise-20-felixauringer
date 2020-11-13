@@ -14,6 +14,11 @@ RSpec.describe Paper, type: :model do
     it 'can be created' do
       expect { create_paper }.to change(Paper, :count).by(1)
     end
+
+    it 'has a list of papers' do
+      create_paper
+      expect(Paper.last.authors).to eq([])
+    end
   end
 
   context 'without title' do
