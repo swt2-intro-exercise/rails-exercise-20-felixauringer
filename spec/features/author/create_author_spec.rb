@@ -27,7 +27,6 @@ describe 'Submitting the new author form', type: :feature do
 
     it 'does not add the author to the database' do
       expect { create_author }.not_to change(Author, :count)
-
     end
 
     it 'shows an error message' do

@@ -1,5 +1,5 @@
 module FormHelpers
-  def submit_form()
+  def submit_form
     find('input[name="commit"]').click
   end
 end
