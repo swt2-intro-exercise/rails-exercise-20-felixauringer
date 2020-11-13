@@ -12,7 +12,7 @@ describe 'Author model', type: :model do
   end
   let(:author) { Author.new author_params }
 
-  context 'with valid params' do
+  describe 'with valid params' do
     it 'has all attributes defined' do
       expect(author.first_name).to eq('Alan')
       expect(author.last_name).to eq('Turing')
