@@ -14,7 +14,7 @@ RSpec.describe 'Update author request', type: :request do
 
   describe 'with valid params' do
     it 'redirects to the show page' do
-      expect(response).to redirect_to(author_path author)
+      expect(response).to redirect_to(author_path(author))
     end
   end
 

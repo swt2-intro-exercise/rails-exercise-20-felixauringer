@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/form_helpers'
 
 describe 'Submitting the edit author form', type: :feature do
   let(:author) { FactoryBot.create(:author, :with_homepage) }
@@ -8,7 +9,7 @@ describe 'Submitting the edit author form', type: :feature do
     fill_in('author[first_name]', with: updated_author.first_name)
     fill_in('author[last_name]', with: updated_author.last_name)
     fill_in('author[homepage]', with: updated_author.homepage)
-    click_button('commit')
+    submit_form
   end
 
   describe 'with valid attributes' do

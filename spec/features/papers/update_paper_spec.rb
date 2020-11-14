@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/form_helpers'
 
 describe 'Submitting the edit paper form', type: :feature do
   let(:paper) { FactoryBot.create :paper }
@@ -16,7 +17,7 @@ describe 'Submitting the edit paper form', type: :feature do
     fill_in('paper[title]', with: updated_paper.title)
     fill_in('paper[venue]', with: updated_paper.venue)
     fill_in('paper[year]', with: updated_paper.year)
-    click_button('commit')
+    submit_form
   end
 
   describe 'with valid attributes' do

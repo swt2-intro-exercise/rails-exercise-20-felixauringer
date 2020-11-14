@@ -14,7 +14,7 @@ RSpec.describe 'Create paper request', type: :request do
 
   describe 'with valid params' do
     it 'redirects to the show page' do
-      expect(response).to redirect_to(paper_path Paper.last)
+      expect(response).to redirect_to(paper_path(Paper.last))
     end
   end
 
