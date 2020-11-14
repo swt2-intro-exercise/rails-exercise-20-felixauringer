@@ -1,22 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe 'papers/show', type: :view do
-  let(:authors) { FactoryBot.create_list(:author, 5) }
-  before(:each) do
-    @paper = assign(:paper, Paper.create(
-                              title: 'Title',
-                              venue: 'Venue',
-                              year: 2,
-                              authors: authors
-                            ))
+  let(:paper) { FactoryBot.create(:paper, :with_authors) }
+
+  before do
+    assign(:paper, paper)
+    render
   end
 
-  it 'renders attributes in <p>' do
+  it 'renders the paper attributes' do
     render
-    expect(rendered).to match(/Title/)
-    expect(rendered).to match(/Venue/)
-    expect(rendered).to match(/2/)
-    expect(rendered).to have_text(authors[0].name)
-    expect(rendered).to have_text(authors[-1].name)
+    expect(rendered).to have_text(paper.title)
+    expect(rendered).to have_text(paper.venue)
+    expect(rendered).to have_text(paper.year)
+  end
+
+  it 'renders the list of associated authors' do
+    paper.authors.each do |author|
+      expect(rendered).to have_text(author.name)
+    end
+  end
+
+  it 'renders a link to the index page' do
+    expect(rendered).to have_link('Back', href: papers_path)
+  end
+
+  it 'renders a link to the edit page' do
+    expect(rendered).to have_link('Edit paper', href: edit_paper_path(paper))
+  end
+
+  it 'renders a link for deleting the paper' do
+    expect(rendered).to have_link('Delete paper', href: paper_path(paper))
   end
 end

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'authors/index', type: :view do
-  let!(:authors) { FactoryBot.create_list(:author, 5, :with_homepage) }
+  let(:authors) { FactoryBot.create_list(:author, 5, :with_homepage) }
+
   before do
     assign(:authors, authors)
     render
@@ -24,5 +25,9 @@ RSpec.describe 'authors/index', type: :view do
 
   it 'renders a link to the new author page' do
     expect(rendered).to have_link('New author', href: new_author_path)
+  end
+
+  it 'renders a link to the homepage' do
+    expect(rendered).to have_link('Homepage', href: root_path)
   end
 end
